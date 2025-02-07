@@ -9,22 +9,13 @@ import {
 function ProjectCard() {
     return (
         <Card className="bg-gray-900 text-white rounded-lg shadow-lg overflow-hidden max-w-md mx-auto border-none">
-            <CardHeader>
+            <CardHeader className="p-4 pb-0">
                 <img
                     src="https://via.placeholder.com/400x300" // Replace with actual image URL
                     alt="Project Thumbnail"
-                    className="w-full h-48 object-cover"
+                    className="w-full h-44 object-cover rounded-lg"
                 />
-            </CardHeader>
-            <CardContent>
-                <h3 className="text-xl font-semibold mb-2">AI Image SaaS - Canva Application</h3>
-                <p className="text-gray-400 text-sm mb-4">
-                    A REAL Software-as-a-Service app with AI features and a payments and
-                    credits system using the latest tech stack.
-                </p>
-            </CardContent>
-            <CardFooter className="flex justify-between">
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 py-2">
                     <img
                         src="https://via.placeholder.com/24" // Replace with tech stack icons
                         alt="Tech 1"
@@ -46,8 +37,16 @@ function ProjectCard() {
                         className="w-6 h-6"
                     />
                 </div>
-                <a href="#" className="text-blue-500 text-sm font-medium flex items-center hover:underline" >
-                    Check Live Site
+            </CardHeader>
+            <CardContent className="p-4 pt-1 pb-0">
+                <h3 className="text-lg font-semibold">AI Image SaaS - Canva Application</h3>
+                <p className="text-gray-400 text-sm mt-1">
+                    A REAL Software-as-a-Service app with AI features and a payments 
+                </p>
+            </CardContent>
+            <CardFooter className="flex justify-end p-4 py-3">
+                <a href="#" className="text-blue-500 text-sm font-medium flex justify-center items-center hover:underline" >
+                    Live Site
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
