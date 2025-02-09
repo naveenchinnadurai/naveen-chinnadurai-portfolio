@@ -1,4 +1,5 @@
 import { FiMapPin, FiPhone, FiMail, FiGlobe } from "react-icons/fi";
+import FadeInOnScroll from "./animations/fadeIn";
 
 
 export default function ContactInfo() {
@@ -27,24 +28,30 @@ export default function ContactInfo() {
     return (
         <section className={`text-white py-20 px-6`}>
             <div className="text-center mb-10">
-                <h2 className="relative text-4xl font-bold mb-2">
-                    Contact Me
-                    <span className="absolute -top-10 -left-3    inset-0 -z-10 text-gray-200 text-[6rem] font-bold tracking-wide leading-none opacity-10">
-                        Contact
-                    </span>
+                <h2 className="relative text-4xl font-bold mb-2 tracking-wider">
+                    <FadeInOnScroll direction="bottom" duration={0.6}>
+                        Contact Me
+                    </FadeInOnScroll>
+                    <FadeInOnScroll direction="bottom" duration={0.4} className="absolute -top-6 md:-top-10 -left-3 inset-0 -z-10">
+                        <span className=" text-gray-20 text-7xl 0 md:text-8xl font-bold tracking-wider leading-none opacity-10">
+                            Contact
+                        </span>
+                    </FadeInOnScroll>
                 </h2>
-                <p className="text-gray-400 text-lg">
-                    Far far away, behind the word mountains, far from the countries <br /> Vokalia and Consonantia.
-                </p>
+                <FadeInOnScroll direction="bottom" duration={0.6}>
+                    <p className="text-gray-400 text-md">
+                        Far far away, behind the word mountains, far from the countries <br /> Vokalia and Consonantia.
+                    </p>
+                </FadeInOnScroll>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
                 {
                     contactDetails.map((item, index) => (
-                        <div key={index} className="text-center">
+                        <FadeInOnScroll direction="left" duration={index / 10 + 0.35} key={index} className="text-center">
                             {item.icon}
                             <h3 className="text-lg font-semibold">{item.title}</h3>
-                            <p className="text-gray-400 mt-1">{item.info}</p>
-                        </div>
+                            <p className="text-gray-400 mt-1 text-sm">{item.info}</p>
+                        </FadeInOnScroll>
                     ))
                 }
             </div>
