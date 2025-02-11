@@ -13,7 +13,7 @@ interface FadeInOnScrollProps {
 
 const FadeInOnScroll: React.FC<FadeInOnScrollProps> = ({
     children,
-    threshold = 0.1,
+    threshold = 0.3,
     direction = "top",
     duration = 0.5,
     className = "",

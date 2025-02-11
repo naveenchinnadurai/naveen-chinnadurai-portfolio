@@ -1,7 +1,8 @@
 {
-  "name": "my_portfolio",
+  "name": "naveen_portfolio",
   "version": "0.1.0",
   "private": true,
+  "author": "Naveen Chinnadurai",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

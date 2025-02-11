@@ -1,3 +1,23 @@
+import collegeDuesOff from '../assets/projectThumbnail/collegeDuesOff.png';
+import jobBoard from '../assets/projectThumbnail/jobBoard.png';
+import bookStore from '../assets/projectThumbnail/bookstore.png';
+import whiteBoard from '../assets/projectThumbnail/whiteBoard.png';
+import ageCalculator from '../assets/projectThumbnail/ageCalci.png';
+import webCalci from '../assets/projectThumbnail/calci.png';
+import cgpaCalci from '../assets/projectThumbnail/cgpaCalci.png';
+import flames from '../assets/projectThumbnail/flames.png';
+import greenBite from '../assets/projectThumbnail/greenBite.png';
+import jobSearch from '../assets/projectThumbnail/jobSearch.png';
+import symposium from '../assets/projectThumbnail/symposium.png';
+import travorZween from '../assets/projectThumbnail/travorZween.png';
+import ZweenEdu from '../assets/projectThumbnail/zweenEdu.png';
+import zmail from '../assets/projectThumbnail/zmail.png';
+import marketing from '../assets/projectThumbnail/marketing.png';
+import zweenTextiles from '../assets/projectThumbnail/zweenTextiles.png';
+
+import { ProjectType } from './types';
+
+
 export const certifications = [
     { name: "Core Java Specialization", issuer: "Learn Quest (Coursera)", date: "Dec 2023" },
     { name: "Front-End Development Libraries", issuer: "Free Code Camp", date: "Dec 2023" },
@@ -7,7 +27,6 @@ export const certifications = [
     { name: "ChatGPT for Everyone", issuer: "Guvi", date: "Sept 2023" },
     { name: "Modern Javascript for Beginners", issuer: "Udemy", date: "July 2024" },
 ]
-
 
 const awards = [
     {
@@ -20,7 +39,6 @@ const awards = [
         description: "Successfully passed the HackerRank skill test for the React Frontend Developer domain.",
     },
 ]
-
 
 export const education = [
     {
@@ -55,76 +73,93 @@ export const education = [
     }
 ]
 
-export const projects = [
+export const projects: ProjectType[] = [
     {
         name: "College Dues Off",
         description: "A mobile app to streamline college processes, enabling students to track dues, access internal marks, download mark-sheets, and request certificates.",
         techStack: ["reactNative", "typescript", "tailwindcss", "expogo", "postgresql"],
-        liveSite: "https://github.com/naveenchinnadurai/college-dues-off",
-        image: "https://via.placeholder.com/400x300"
+        repo: "https://github.com/naveenchinnadurai/college-dues-off",
+        liveSite: null,
+        image: collegeDuesOff
     },
     {
         name: "Job Board",
         description: "A full-stack application for job seekers and employers. Employees can search and apply for jobs, while employers can post job openings and manage applications.",
         techStack: ["react", "typescript", "tailwindcss", "nodejs"],
-        liveSite: "https://github.com/NaveenChinnadurai/job-board",
-        image: "https://via.placeholder.com/400x300"
+        repo: "https://github.com/NaveenChinnadurai/job-board",
+        liveSite: null,
+        image: jobBoard
     },
     {
         name: "Book Store Web App",
         description: "A multi-page website using Google Books API to fetch and display book details including author, rating, price, and purchase links.",
         techStack: ["react", "typescript", "tailwindcss", "supabase"],
-        liveSite: "https://github.com/NaveenChinnadurai/bookstore-react-web",
-        image: "https://via.placeholder.com/400x300"
+        repo: "https://github.com/NaveenChinnadurai/bookstore-react-web",
+        liveSite: 'https://zween-book-store.vercel.app/',
+        image: bookStore
     },
     {
         name: "White Board",
         description: "A full-stack application for job seekers and employers. Employees can search and apply for jobs, while employers can post job openings and manage applications.",
         techStack: ["react", "typescript", "tailwindcss", "postgresql", "drizzleorm"],
-        liveSite: "https://github.com/NaveenChinnadurai/job-board",
-        image: "https://via.placeholder.com/400x300"
+        repo: "https://github.com/NaveenChinnadurai/job-board",
+        liveSite: null,
+        image: whiteBoard
     },
     {
         name: "Travel Website",
         description: "A responsive website for a travel agency with a multi-page interface showcasing over 10 tourist destinations, categorized sections, and detailed offers.",
         techStack: ["react", "tailwindcss", "javascript"],
-        liveSite: "https://github.com/NaveenChinnadurai/Travor_Zween-Travel-web",
-        image: "https://via.placeholder.com/400x300"
+        liveSite: "https://travor-zween-travel.vercel.app/",
+        repo: "https://github.com/NaveenChinnadurai/Travor_Zween-Travel-web",
+        image: travorZween
     },
     {
         name: "CGPA Calculator Web",
         description: "A web application that follows Anna University's grading system, allowing students to track their semester-wise and cumulative CGPA efficiently.",
         techStack: ["nextjs", "tailwindcss", "typescript"],
-        liveSite: "https://github.com/naveenchinnadurai/cgpa_calculator",
-        image: "https://via.placeholder.com/400x300"
+        repo: "https://github.com/naveenchinnadurai/cgpa_calculator",
+        liveSite: "https://zween-cgpa-calculator.vercel.app/",
+        image: cgpaCalci
     },
     {
         name: "Job-Seeking Website",
         description: "A one-page React application that streamlines job searching with real-time job updates, filtering options, and a responsive interface.",
         techStack: ["react", "html", "css", "javascript"],
+        repo: "https://github.com/naveenchinnadurai/techHolic-react-web-app",
         liveSite: "https://naveenchinnadurai.github.io/techHolic-react-web-app",
-        image: "https://via.placeholder.com/400x300" // Replace with actual screenshot
+        image: jobSearch
     },
     {
         name: "Symposium Event Details Web",
         description: "A multi-page website offering detailed descriptions of departmental events for a college symposium, deployed and hosted on Vercel.",
         techStack: ["react", "css", "html"],
+        repo: 'https://github.com/naveenchinnadurai/Clg-Symposium-web',
         liveSite: "https://techsym-sarayu-2k23.vercel.app/",
-        image: "https://via.placeholder.com/400x300"
+        image: symposium
     },
     {
         name: "Zween Educational Website",
         description: "A multi-page website showcasing an educational organization, its courses, and relevant details with a seamless user experience.",
         techStack: ["react", "javascript", "css"],
+        repo: "https://github.com/naveenchinnadurai/Zween-Education-WebApp",
         liveSite: "https://zween-education-web.vercel.app/",
-        image: "https://via.placeholder.com/400x300"
+        image: ZweenEdu
     },
     {
         name: "GreenBite Restaurant ",
         description: "A React-based restaurant landing page displaying the restaurant’s menu and details, designed with an elegant UI.",
         techStack: ["react", "tailwindcss", "typescript"],
-        liveSite: "https://github.com/your-repo-link",
-        image: "https://via.placeholder.com/400x300"
+        repo: "https://github.com/naveenchinnadurai/greenBite-reactWeb",
+        liveSite: "https://green-bite-react-web.vercel.app/",
+        image: greenBite
+    }, {
+        name: "Zween Textiles",
+        description: "A multipage landing page designed for a textile company, showcasing their products, features, and services to potential clients and visitors.",
+        techStack: ["react", "bootstrap", "javascript"],
+        repo: "https://github.com/naveenchinnadurai/zween_textile",
+        liveSite: "https://zween-textile.vercel.app/",
+        image: zweenTextiles
     },
     {
         name: "Calculator Web App",
@@ -132,15 +167,15 @@ export const projects = [
         techStack: ["react", "css", "javascript"],
         repo: "https://github.com/naveenchinnadurai/Calculator_using_ReactJs",
         liveSite: "https://naveenchinnadurai.github.io/Calculator_using_ReactJs/",
-        image: "https://via.placeholder.com/400x300"
+        image: webCalci
     },
     {
         name: "Calculator Mobile App",
         description: "Developed a Mobile Application with Expo to perform arithmatic calculations in mobile devices",
         techStack: ["reactNative", "expoGo", "javascript"],
         repo: "https://github.com/naveenchinnadurai/calculator-reactNativeApp",
-        liveSite: "https://naveenchinnadurai.github.io/age-calculator-react-app/",
-        image: "https://via.placeholder.com/400x300"
+        liveSite: null,
+        image: webCalci
     },
     {
         name: "Age Calculator",
@@ -148,23 +183,15 @@ export const projects = [
         techStack: ["react", "css", "javascript"],
         repo: "https://github.com/naveenchinnadurai/age-calculator-react-app",
         liveSite: "https://naveenchinnadurai.github.io/age-calculator-react-app/",
-        image: "https://via.placeholder.com/400x300"
+        image: ageCalculator
     },
     {
         name: "Flames Felationship Finder",
         description: " The Flames Relationship Calculator is a Python desktop app built with Kivy, determining relationship status using the traditional 'FLAMES' method.",
         techStack: ["python", "kivy"],
         repo: "https://github.com/naveenchinnadurai/flames_python_kivy_project",
-        liveSite: "https://naveenchinnadurai.github.io/age-calculator-react-app/",
-        image: "https://via.placeholder.com/400x300"
-    },
-    {
-        name: "Job Seeking Landing Page",
-        description: "A one-page React app designed for efficient job searching. It features real-time job updates, dynamic filters, and a responsive interface. ",
-        techStack: ["react", "css", "javascript"],
-        repo: "https://github.com/naveenchinnadurai/techHolic-react-web-app",
-        liveSite: "https://naveenchinnadurai.github.io/techHolic-react-web-app/",
-        image: "https://via.placeholder.com/400x300"
+        liveSite: null,
+        image: flames
     },
     {
         name: "Zmail - A Mail Platform",
@@ -172,7 +199,15 @@ export const projects = [
         techStack: ["nextjs", "typescript", "tailwindcss", "postgresql", "drizzleorm"],
         repo: "https://github.com/naveenchinnadurai/zmail",
         liveSite: "https://naveenchinnadurai.github.io/age-calculator-react-app/",
-        image: "https://via.placeholder.com/400x300"
+        image: zmail
+    },
+    {
+        name: "Marketing Landing Page",
+        description: "landing page for a sales automation and marketing company, showcasing key features, customer testimonials, and seamless engagement tools.",
+        techStack: ["react", "javascript", "tailwindcss"],
+        repo: "https://github.com/naveenchinnadurai/zween_marketing_landing_page",
+        liveSite: "https://zween-landing-page.vercel.app/",
+        image: marketing
     }
 ];
 
