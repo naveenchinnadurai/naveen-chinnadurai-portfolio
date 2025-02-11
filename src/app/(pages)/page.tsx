@@ -1,5 +1,5 @@
 "use client"
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { certifications, education, projects } from "@/lib/data";
 import { Calendar, ChevronsDown, MessageCircleWarning } from "lucide-react";
@@ -22,14 +22,18 @@ const Footer = lazy(() => import("@/components/footer"));
 const ProjectCard = lazy(() => import("@/components/projectCard"));
 
 function App() {
+    const [isMobile, setIsMobile] = useState(false);
 
-    const Loader = () => {
-        return (
-            <div className="h-screen flex justify-center items-center">
-                <span className="loader"></span>
-            </div>
-        )
-    }
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsMobile(window.innerWidth <= 1000);
+        };
+
+        checkScreenSize();
+        window.addEventListener("resize", checkScreenSize);
+
+        return () => window.removeEventListener("resize", checkScreenSize);
+    }, []);
 
     const [displayCount, setDisplayCount] = useState(8);
 
@@ -37,7 +41,7 @@ function App() {
         setDisplayCount(displayCount + 8);
     };
 
-    if (window.innerWidth <= 1000) {
+    if (isMobile) {
         return (
             <div className="flex flex-col justify-center items-center h-screen text-center p-5">
                 <MessageCircleWarning className="text-7xl text-purple-300 mb-3" />
@@ -48,7 +52,13 @@ function App() {
     }
 
     return (
-        <Suspense fallback={<Loader />}>
+        <Suspense
+            fallback={
+                <div className="h-screen flex justify-center items-center">
+                    <span className="loader"></span>
+                </div>
+            }
+        >
             <div className="scrollbar w-full overflow-hidden relative">
                 <div className="-z-10 absolute top-0 right-0">
                     <Image src={spotlight} alt="Spotlight Image" />
@@ -88,7 +98,7 @@ function App() {
                             </div>
                         </div>
                         <FadeInOnScroll duration={0.8} direction="right" className=" flex col-span-1 relative items-center justify-center p-6 mt-8 lg:mt-0 h-full w-full">
-                            <Image src={me} alt="My Image" className="absolute -left-4 object-contain h-[300px] w-[280px] md:w-[130%] md:h-[130%]" />
+                            <Image src={me} alt="My Image" className="absolute -left-4 object-contain h-[300px] w-[280px] md:w-[130%] md:h-[130%]" width={280} height={300} />
                         </FadeInOnScroll>
                     </div>
                 </section>
@@ -99,11 +109,13 @@ function App() {
                 <section className="h-screen text-white py-12 px-6 md:w-4/5 mx-auto flex flex-col md:flex-row items-center justify-end space-y-8 md:space-y-0">
                     <FadeInOnScroll direction="left">
                         <div className="h-[500px] w-[400px] bg-slate-400 hidden md:flex">
-                            <img
+                            {/* <Image
                                 src="https://via.placeholder.com/400x500" // Replace with actual image URL
                                 alt="Profile"
                                 className="h-auto rounded-lg shadow-lg"
-                            />
+                                width={400}
+                                height={500}
+                            /> */}
                         </div>
                     </FadeInOnScroll>
                     <div className="ml-8 md:w-3/6">
@@ -119,12 +131,13 @@ function App() {
                         </h2>
                         <FadeInOnScroll direction="bottom" duration={0.6}>
                             <p className="text-gray-400 mb-6">
-                                I'm a passionate developer skilled in frontend and backend
+                                I&apos;m a passionate developer skilled in frontend and backend
                                 technologies. I enjoy creating user-friendly applications and
-                                solving challenging problems. I'm a passionate developer skilled in frontend and backend
+                                solving challenging problems. I&apos;m a passionate developer skilled in frontend and backend
                                 technologies. I enjoy creating user-friendly applications and
                                 solving challenging problems.
                             </p>
+
                         </FadeInOnScroll>
                         <ul className="text-gray-300 space-y-2">
                             <li>
@@ -163,6 +176,38 @@ function App() {
                         </FadeInOnScroll>
                     </div>
                 </section >
+
+                <div className="px-3 md:px-0 mx-auto md:w-4/5 relative">
+                    {
+                        education.map((edu, index) => (
+                            <div key={index} className="flex items-center w-full relative h-fit pb-10 md:p-0  md:h-52 ">
+                                {/* Timeline Line */}
+                                <div className="absolute left-0 md:left-1/2 -translate-x-1/2 w-1 h-full bg-blue-500"></div>
+
+                                {/* Content Box */}
+                                <div className={`w-full flex shadow-lg ${index % 2 === 0 ? " justify-start pt-5" : " md:justify-end py-10"}`}>
+                                    <FadeInOnScroll direction={index % 2 == 0 ? "left" : "right"} duration={(index / 10) + 0.4} className={`bg-gray-900 p-4 md:p-6 rounded-xl shadow-md h-fit ml-4 -mt-3 md:-mt-10  md:w-1/2 ${index % 2 === 0 ? " md:mr-10 md:-mt-12 md:-ml-5" : "md:ml-10 md:-mt-8 md:-mr-5"}`}>
+                                        <h3 className="text-lg md:text-2xl text-slate-400 font-bold">{edu.degree}</h3>
+                                        <p className="text-md md:text-xl text-violet-600">{edu.institution}, {edu.location}</p>
+                                        <p className="text-gray-400"> {edu.duration}</p>
+                                        <ul className="list-disc list-inside mt-3 text-gray-600">
+                                            {
+                                                edu.details.map((detail, idx) => (
+                                                    <li key={idx}>{detail}</li>
+                                                ))
+                                            }
+                                        </ul>
+                                    </FadeInOnScroll>
+                                </div>
+
+                                {/* Circular Marker */}
+                                <div className="absolute left-0 md:left-1/2 top-0 -translate-x-1/2 w-6 h-6 bg-blue-400 rounded-full border-4 border-white"></div>
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <h1 className="text-center text-white">Explore the Course I have done, <Link href="" className="text-violet-800 underline">here</Link></h1>
 
                 {/* Projects */}
                 <div className="flex flex-col pt-24 items-center gap-4">
@@ -239,12 +284,11 @@ function App() {
                         </div>
                     </div>
                 </div >
-
                 <ContactInfo />
-
                 <Footer />
-            </div>
-        </Suspense>
+            </div >
+
+        </Suspense >
     );
 }
 

@@ -28,7 +28,7 @@ export const certifications = [
     { name: "Modern Javascript for Beginners", issuer: "Udemy", date: "July 2024" },
 ]
 
-const awards = [
+export const awards = [
     {
         title: "College Symposiums and Events",
         description:
