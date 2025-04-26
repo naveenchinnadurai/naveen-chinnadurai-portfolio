@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
-import me from '../../assets/me.png';
+import me from '../../assets/me2.png';
 import spotlight from '../../assets/spotlight.png';
 
 import FadeInOnScroll from "@/components/animations/fadeIn";
@@ -23,22 +23,27 @@ const ProjectCard = lazy(() => import("@/components/projectCard"));
 
 function App() {
     const [isMobile, setIsMobile] = useState(false);
+    const [displayCount, setDisplayCount] = useState(8);
 
     useEffect(() => {
         const checkScreenSize = () => {
             setIsMobile(window.innerWidth <= 1000);
         };
-
         checkScreenSize();
         window.addEventListener("resize", checkScreenSize);
-
         return () => window.removeEventListener("resize", checkScreenSize);
     }, []);
 
-    const [displayCount, setDisplayCount] = useState(8);
-
     const loadMoreProjects = () => {
         setDisplayCount(displayCount + 8);
+    };
+
+    // Smooth Scroll function
+    const scrollToSection = (id: string) => {
+        const section = document.getElementById(id);
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+        }
     };
 
     if (isMobile) {
@@ -52,23 +57,23 @@ function App() {
     }
 
     return (
-        <Suspense
-            fallback={
-                <div className="h-screen flex justify-center items-center">
-                    <span className="loader"></span>
-                </div>
-            }
-        >
-            <div className="scrollbar w-full overflow-hidden relative">
+        <Suspense fallback={
+            <div className="h-screen flex justify-center items-center">
+                <span className="loader"></span>
+            </div>
+        }>
+            <div className="scrollbar w-full overflow-hidden relative" style={{ scrollBehavior: "smooth" }}>
+                {/* Background spotlight images */}
                 <div className="-z-10 absolute top-0 right-0">
                     <Image src={spotlight} alt="Spotlight Image" />
                 </div>
                 <div className="-z-10 absolute -top-4 left-4">
                     <Image src={spotlight} alt="Spotlight Image" className=" -rotate-90" />
                 </div>
-                {/* Banner Section */}
+
+                {/* Navbar */}
                 <section className="text-gray-800 md:w-5/6 h-fit mx-auto z-50">
-                    <Navbar />
+                    <Navbar onLinkClick={scrollToSection} />
                     <div className="items-center grid grid-col-1 md:grid-cols-3 mx-auto py-36">
                         <div className="flex px-3 flex-col col-span-2 justify-center text-center rounded-sm lg:text-left">
                             <FadeInOnScroll direction="bottom">
@@ -85,7 +90,7 @@ function App() {
                                     <br className="hidden md:inline lg:hidden" />turpis pulvinar, est scelerisque <br /> ligula sem Lorem ipsum dolor sit amet consectetur
                                 </p>
                             </FadeInOnScroll>
-                            <div className="flex items-center space-y-4 sm:space-y-0 sm:space-x-4 lg:justify-start gap-2">
+                            <div className="flex items-center sm:space-x-4 justify-center lg:justify-start gap-2">
                                 <FadeInOnScroll direction="left" duration={1.2}>
                                     <Link href="https:github.com/naveenchinnadurai" className="cursor-pointer"><FaGithub className="text-4xl" /></Link>
                                 </FadeInOnScroll>
@@ -97,16 +102,18 @@ function App() {
                                 </FadeInOnScroll>
                             </div>
                         </div>
-                        <FadeInOnScroll duration={0.8} direction="right" className=" flex col-span-1 relative items-center justify-center p-6 mt-8 lg:mt-0 h-full w-full">
+                        <FadeInOnScroll duration={0.8} direction="right" className="hidden md:flex col-span-1 relative items-center justify-center p-6 mt-8 lg:mt-0 h-full w-full">
                             <Image src={me} alt="My Image" className="absolute -left-4 object-contain h-[300px] w-[280px] md:w-[130%] md:h-[130%]" width={280} height={300} />
                         </FadeInOnScroll>
                     </div>
                 </section>
                 {/* Skills Section */}
-                <Skills />
+                <div id="skills" className="">
+                    <Skills />
+                </div>
 
                 {/* About Section */}
-                <section className="h-screen text-white py-12 px-6 md:w-4/5 mx-auto flex flex-col md:flex-row items-center justify-end space-y-8 md:space-y-0">
+                <section id="about" className="h-screen text-white py-12 px-6 md:w-4/5 mx-auto flex flex-col md:flex-row items-center justify-end space-y-8 md:space-y-0">
                     <FadeInOnScroll direction="left">
                         <div className="h-[500px] w-[400px] bg-slate-400 hidden md:flex">
                             {/* <Image
@@ -177,7 +184,17 @@ function App() {
                     </div>
                 </section >
 
-                <div className="px-3 md:px-0 mx-auto md:w-4/5 relative">
+                <div id="education" className="py-12 px-6 md:px-0 mx-auto md:w-4/5 relative">
+                    <h2 className="text-4xl font-bold mb-7 relative tracking-widest text-center">
+                        <FadeInOnScroll direction="bottom">
+                            <span className="absolute -top-8 -left-3 inset-0 -z-10 text-gray-200 text-[4rem] font-bold tracking-wider leading-none opacity-10">
+                                EDUCATION
+                            </span>
+                        </FadeInOnScroll>
+                        <FadeInOnScroll direction="bottom" duration={0.8}>
+                            <h2 className="text-white text-md">Education Qualification</h2>
+                        </FadeInOnScroll>
+                    </h2>
                     {
                         education.map((edu, index) => (
                             <div key={index} className="flex items-center w-full relative h-fit pb-10 md:p-0  md:h-52 ">
@@ -207,10 +224,10 @@ function App() {
                     }
                 </div>
 
-                <h1 className="text-center text-white">Explore the Course I have done, <Link href="" className="text-violet-800 underline">here</Link></h1>
+                <h1 className="text-center text-white">Explore the Course I have done, <Link onClick={() => scrollToSection('certifications')} href="" className="text-violet-800 underline">here</Link></h1>
 
                 {/* Projects */}
-                <div className="flex flex-col pt-24 items-center gap-4">
+                <div id="portfolio" className="flex flex-col py-12 items-center gap-4">
                     <div className="text-center">
                         <h2 className="relative text-3xl md:text-4xl font-bold mb-2 text-white tracking-[10px]">
                             <FadeInOnScroll direction="bottom" duration={0.3}>
@@ -228,7 +245,7 @@ function App() {
                             </p>
                         </FadeInOnScroll>
                     </div>
-                    <div className="overflow-hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-5 md:px-10 gap-3 align-content-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-5 md:px-10 gap-3 align-content-center">
                         {
                             projects.slice(0, displayCount).map((project, index) => (
                                 <FadeInOnScroll key={index} direction="left" duration={(index % 5) / 10 + 0.4} className="flex items-stretch">
@@ -254,10 +271,10 @@ function App() {
                 </div >
 
                 {/* Coding Profiles */}
-                <CodingPerformance className="mx-3 md:mx-10" />
+                <CodingPerformance className="mx-3 md:mx-10 py-12 px-6 " />
 
                 {/* Certifications */}
-                <div className="flex flex-col gap-2 mx-3 md:mx-10">
+                <div id='certifications' className="flex flex-col gap-2 py-12 px-6 mx-3 md:mx-10">
                     <h2 className="relative text-4xl font-bold mb-2 text-white tracking-wider">
                         Certifications
                     </h2>
@@ -284,7 +301,10 @@ function App() {
                         </div>
                     </div>
                 </div >
-                <ContactInfo />
+
+                <div id="contact" className="">
+                    <ContactInfo />
+                </div>
                 <Footer />
             </div >
 

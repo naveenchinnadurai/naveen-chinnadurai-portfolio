@@ -35,7 +35,7 @@ function Skills() {
         { src: supabase, alt: "Supabase", size: "h-10 w-10" }
     ];
     return (
-        <div className="flex flex-col gap-8 px-3">
+        <div className="flex flex-col gap-8 px-3 pt-20 pb-5">
             <div className="text-center">
                 <h2 className="relative text-4xl font-bold mb-2 text-white tracking-[10px]">
                     <FadeInOnScroll direction="bottom" duration={0.5} className="absolute -top-4 md:-top-10  inset-0 -z-10 ">

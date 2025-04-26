@@ -39,7 +39,7 @@ type ProjectCardProps = {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     return (
-        <Card className="relative bg-gray-900 text-white rounded-lg shadow-lg overflow-hidden max-w-md mx-auto border-none">
+        <Card className="w-full relative bg-gray-900 text-white rounded-lg shadow-lg overflow-hidden border-none">
             <CardHeader className="p-4 pb-0">
                 <Image
                     src={project.image}
