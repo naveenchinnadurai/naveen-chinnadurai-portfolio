@@ -1,37 +1,32 @@
+import { Card, CardContent, CardFooter, CardHeader, } from "@/components/ui/card";
 import React from "react";
-import {
-    Card,
-    CardContent,
-    CardFooter,
-    CardHeader,
-} from "@/components/ui/card";
 
+import bootstrap from '../assets/logo/bootstrap.svg';
+import css from '../assets/logo/css.svg';
+import drizzle from '../assets/logo/drizzleorm.svg';
+import expo from '../assets/logo/expogo.svg';
 import figma from '../assets/logo/figma.svg';
+import html from '../assets/logo/html.svg';
 import javascript from '../assets/logo/javascript.png';
+import kivy from '../assets/logo/kivy.png';
 import next from '../assets/logo/nextjs.svg';
+import nodejs from '../assets/logo/nodejs1.svg';
 import postgresql from '../assets/logo/postgresql.svg';
+import python from '../assets/logo/python.svg';
 import react from '../assets/logo/react.svg';
 import sqlite from '../assets/logo/sqlite.png';
+import supabase from '../assets/logo/supabase.svg';
+import tailwind from '../assets/logo/tailwind.svg';
 import typescript from '../assets/logo/typescript.png';
-import tailwind from '../assets/logo/tailwind.svg'
-import python from '../assets/logo/python.svg'
-import nodejs from '../assets/logo/nodejs1.svg'
-import html from '../assets/logo/html.svg'
-import css from '../assets/logo/css.svg'
-import drizzle from '../assets/logo/drizzleorm.svg'
-import expo from '../assets/logo/expogo.svg'
-import kivy from '../assets/logo/kivy.png'
-import supabase from '../assets/logo/supabase.svg'
-import bootstrap from '../assets/logo/bootstrap.svg'
 
 import { FaGithub as Github } from "react-icons/fa";
 
 
+import { ProjectType } from "@/lib/types";
+import { shortenText } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { shortenText } from "@/lib/utils";
-import { ProjectType } from "@/lib/types";
 
 type ProjectCardProps = {
     project: ProjectType;

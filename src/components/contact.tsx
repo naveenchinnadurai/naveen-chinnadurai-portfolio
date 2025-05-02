@@ -1,13 +1,12 @@
 'use client';
 
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { FiMapPin, FiPhone, FiMail, FiGlobe } from "react-icons/fi";
+import { useState } from "react";
 import { FaExternalLinkAlt as Message } from "react-icons/fa";
+import { FiGlobe, FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 
 import FadeInOnScroll from "./animations/fadeIn";
 

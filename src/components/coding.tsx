@@ -1,9 +1,9 @@
 "use client";
-import { FaStar, FaMedal, FaCheckCircle, FaExternalLinkAlt } from "react-icons/fa";
+import Image from "next/image";
+import Link from "next/link";
+import { FaCheckCircle, FaExternalLinkAlt, FaMedal } from "react-icons/fa";
 import hackerRankLogo from '../assets/logo/hackerRank.svg';
 import leetcodeLogo from '../assets/logo/leetcode.png';
-import Link from "next/link";
-import Image from "next/image";
 import FadeInOnScroll from "./animations/fadeIn";
 
 const platforms = [

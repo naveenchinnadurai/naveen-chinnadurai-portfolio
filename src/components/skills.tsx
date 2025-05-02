@@ -48,12 +48,12 @@ function Skills() {
                     </FadeInOnScroll>
                 </h2>
                 <FadeInOnScroll direction="bottom">
-                    <p className="text-gray-400 text-lg">
+                    <p className="text-gray-400 text-lg mt-10 md:mt-0">
                         Far far away, behind the word mountains, far from the countries <br /> Vokalia and Consonantia.
                     </p>
                 </FadeInOnScroll>
             </div>
-            <div className="flex gap-5 md:gap-8 justify-center items-center  md:w-4/5 mx-auto flex-wrap">
+            <div className="flex gap-5 md:gap-8 justify-center items-center  w-5/6 md:w-4/5 mx-auto flex-wrap">
                 {
                     skills.map((skill, index) => (
                         <FadeInOnScroll key={index} direction="left" duration={(index % 5) / 4 + 0.35}>

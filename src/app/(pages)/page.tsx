@@ -1,18 +1,18 @@
 "use client"
-import { Suspense, lazy, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { certifications, education, projects } from "@/lib/data";
-import { Calendar, ChevronsDown, MessageCircleWarning } from "lucide-react";
+import { Calendar, ChevronsDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
 import me from '../../assets/me2.png';
 import spotlight from '../../assets/spotlight.png';
 
 import FadeInOnScroll from "@/components/animations/fadeIn";
-import { handleOpenPdf } from "@/lib/utils";
 import Skills from "@/components/skills";
+import { handleOpenPdf } from "@/lib/utils";
 
 // Lazy load components
 const Navbar = lazy(() => import("@/components/navbar"));
@@ -46,15 +46,15 @@ function App() {
         }
     };
 
-    if (isMobile) {
-        return (
-            <div className="flex flex-col justify-center items-center h-screen text-center p-5">
-                <MessageCircleWarning className="text-7xl text-purple-300 mb-3" />
-                <h2 className="text-lg text-violet-600">Currently Not available for Mobile Devices,</h2>
-                <h2 className="text-md text-violet-400">Try with Desktop screens</h2>
-            </div>
-        )
-    }
+    // if (isMobile) {
+    //     return (
+    //         <div className="flex flex-col justify-center items-center h-screen text-center p-5">
+    //             <MessageCircleWarning className="text-7xl text-purple-300 mb-3" />
+    //             <h2 className="text-lg text-violet-600">Currently Not available for Mobile Devices,</h2>
+    //             <h2 className="text-md text-violet-400">Try with Desktop screens</h2>
+    //         </div>
+    //     )
+    // }
 
     return (
         <Suspense fallback={
@@ -74,8 +74,11 @@ function App() {
                 {/* Navbar */}
                 <section className="text-gray-800 md:w-5/6 h-fit mx-auto z-50">
                     <Navbar onLinkClick={scrollToSection} />
-                    <div className="items-center grid grid-col-1 md:grid-cols-3 mx-auto py-36">
+                    <div className="items-center grid grid-col-1 md:grid-cols-3 mx-auto pt-10  md:py-36">
                         <div className="flex px-3 flex-col col-span-2 justify-center text-center rounded-sm lg:text-left">
+                            <FadeInOnScroll duration={0.8} direction="top" className="md:hidden mx-auto mb-5 flex relative items-center justify-center h-fit w-fit">
+                                <Image src={me} alt="My Image" className=" bg-white rounded-full mx-auto" width={150} height={200} />
+                            </FadeInOnScroll>
                             <FadeInOnScroll direction="bottom">
                                 <p className="text-xl text-white font-bold">Hey there,</p>
                             </FadeInOnScroll>
@@ -83,22 +86,22 @@ function App() {
                                 <h1 className="text-5xl font-bold leading-none sm:text-7xl mt-2"> Naveen Chinnadurai</h1>
                             </FadeInOnScroll>
                             <FadeInOnScroll direction="bottom" duration={1}>
-                                <span className="text-violet-600 text-5xl font-extrabold mt-2"> Full Stack Developer</span>
+                                <span className="text-violet-600 text-4xl md:text-5xl font-extrabold mt-2"> Full Stack Developer</span>
                             </FadeInOnScroll>
                             <FadeInOnScroll direction="bottom" duration={1.2}>
                                 <p className="mt-2 mb-8 text-lg">Dictum aliquam porta in condimentum ac integer
                                     <br className="hidden md:inline lg:hidden" />turpis pulvinar, est scelerisque <br /> ligula sem Lorem ipsum dolor sit amet consectetur
                                 </p>
                             </FadeInOnScroll>
-                            <div className="flex items-center sm:space-x-4 justify-center lg:justify-start gap-2">
+                            <div className="flex items-center sm:space-x-4 justify-center lg:justify-start gap-3">
                                 <FadeInOnScroll direction="left" duration={1.2}>
-                                    <Link href="https:github.com/naveenchinnadurai" className="cursor-pointer"><FaGithub className="text-4xl" /></Link>
+                                    <Link href="https:github.com/naveenchinnadurai" className="cursor-pointer"><FaGithub className="text-4xl text-purple-500" /></Link>
                                 </FadeInOnScroll>
                                 <FadeInOnScroll direction="left" duration={1.2}>
-                                    <Link href="https:linkedin.com/in/naveenchinnadurai" className="cursor-pointer"><FaLinkedin className="text-4xl" /></Link>
+                                    <Link href="https:linkedin.com/in/naveenchinnadurai" className="cursor-pointer"><FaLinkedin className="text-4xl  text-purple-500" /></Link>
                                 </FadeInOnScroll>
                                 <FadeInOnScroll direction="left" duration={1.2}>
-                                    <Link href="https:wa.me/+918098150750" className="cursor-pointer"><FaWhatsapp className="text-4xl" /></Link>
+                                    <Link href="https:wa.me/+918098150750" className="cursor-pointer"><FaWhatsapp className="text-4xl  text-purple-500" /></Link>
                                 </FadeInOnScroll>
                             </div>
                         </div>
