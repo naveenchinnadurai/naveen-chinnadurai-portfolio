@@ -87,22 +87,22 @@ function App() {
                                 <h1 className="text-5xl font-bold leading-none sm:text-7xl mt-2"> Naveen Chinnadurai</h1>
                             </FadeInOnScroll>
                             <FadeInOnScroll direction="bottom" duration={1}>
-                                <span className="text-violet-600 text-4xl md:text-5xl font-extrabold mt-2"> Full Stack Developer</span>
+                                <span className="text-violet-600 text-4xl md:text-5xl font-extrabold mt-2"> Software Developer</span>
                             </FadeInOnScroll>
                             <FadeInOnScroll direction="bottom" duration={1.2}>
-                                <p className="mt-2 mb-8 text-lg">Dictum aliquam porta in condimentum ac integer
+                                <p className="mt-2 mb-8 text-lg text-slate-400">Dictum aliquam porta in condimentum ac integer
                                     <br className="hidden md:inline lg:hidden" />turpis pulvinar, est scelerisque <br /> ligula sem Lorem ipsum dolor sit amet consectetur
                                 </p>
                             </FadeInOnScroll>
                             <div className="flex items-center sm:space-x-4 justify-center lg:justify-start gap-3">
                                 <FadeInOnScroll direction="left" duration={1.2}>
-                                    <Link href="https:github.com/naveenchinnadurai" className="cursor-pointer"><FaGithub className="text-4xl text-purple-500" /></Link>
+                                    <Link href="https:github.com/naveenchinnadurai" className="cursor-pointer"><FaGithub className="text-4xl text-zinc-500" /></Link>
                                 </FadeInOnScroll>
                                 <FadeInOnScroll direction="left" duration={1.2}>
-                                    <Link href="https:linkedin.com/in/naveenchinnadurai" className="cursor-pointer"><FaLinkedin className="text-4xl  text-purple-500" /></Link>
+                                    <Link href="https:linkedin.com/in/naveenchinnadurai" className="cursor-pointer"><FaLinkedin className="text-4xl  text-zinc-500" /></Link>
                                 </FadeInOnScroll>
                                 <FadeInOnScroll direction="left" duration={1.2}>
-                                    <Link href="https:wa.me/+918098150750" className="cursor-pointer"><FaWhatsapp className="text-4xl  text-purple-500" /></Link>
+                                    <Link href="https:wa.me/+918098150750" className="cursor-pointer"><FaWhatsapp className="text-4xl  text-zinc-500" /></Link>
                                 </FadeInOnScroll>
                             </div>
                         </div>
@@ -249,7 +249,7 @@ function App() {
                             </p>
                         </FadeInOnScroll>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-5 md:px-10 gap-3 align-content-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-10 md:px-10 gap-3 align-content-center">
                         {
                             projects.slice(0, displayCount).map((project, index) => (
                                 <FadeInOnScroll key={index} direction="left" duration={(index % 5) / 10 + 0.4} className="flex items-stretch">
@@ -258,27 +258,27 @@ function App() {
                             ))
                         }
                         {/* Button to load more projects */}
-                        {
-                            displayCount < projects.length && (
-                                <div className="col-span-4 flex justify-center mt-4">
-                                    <button
-                                        onClick={loadMoreProjects}
-                                        className="flex gap-1 p-2 text-white rounded-md hover:text-violet-700"
-                                    >
-                                        Load More
-                                        <ChevronsDown />
-                                    </button>
-                                </div>
-                            )
-                        }
                     </div>
+                    {
+                        displayCount < projects.length && (
+                            <div className="col-span-4 flex justify-center mt-4">
+                                <button
+                                    onClick={loadMoreProjects}
+                                    className="flex gap-1 p-2 text-white rounded-md hover:text-violet-700"
+                                >
+                                    Load More
+                                    <ChevronsDown />
+                                </button>
+                            </div>
+                        )
+                    }
                 </div >
 
                 {/* Coding Profiles */}
                 <CodingPerformance className="mx-3 md:mx-10 py-12 px-6 " />
 
                 {/* Certifications */}
-                <div id='certifications' className="flex flex-col gap-2 py-12 px-6 mx-3 md:mx-10">
+                <div id='certifications' className="flex flex-col gap-2 py-12 md:px-6 mx-3 md:mx-10">
                     <h2 className="relative text-4xl font-bold mb-2 text-white tracking-wider">
                         Certifications
                     </h2>

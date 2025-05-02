@@ -45,9 +45,9 @@ export const education = [
         degree: "B.E. Computer Science & Engineering",
         institution: "Sengunthar Engineering College",
         location: "Tiruchengode, Tamilnadu",
-        duration: "Expected Graduation, May 2025",
+        duration: "2021-2025",
         details: [
-            "CGPA: 8.25 (until 6th semester)",
+            "CGPA: 8.25 ",
             // "Related Coursework: Data Structures & Algorithms, Objects & Design, Computer Organization & Programming, Machine Learning, Artificial Intelligence, Object-Oriented Programming, Statistics & Applications.",
         ],
     },
