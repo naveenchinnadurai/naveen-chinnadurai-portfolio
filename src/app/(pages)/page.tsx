@@ -23,6 +23,7 @@ const ProjectCard = lazy(() => import("@/components/projectCard"));
 
 function App() {
     const [isMobile, setIsMobile] = useState(false);
+    console.log(isMobile)
     const [displayCount, setDisplayCount] = useState(8);
 
     useEffect(() => {
