@@ -1,18 +1,16 @@
 "use client"
-import { Button } from "@/components/ui/button";
-import { certifications, education, projects } from "@/lib/data";
+import { certifications, projects } from "@/lib/data";
 import { Calendar, ChevronsDown } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { Suspense, lazy, useEffect, useState } from "react";
-import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
-import me from '../../assets/me2.png';
 import spotlight from '../../assets/spotlight.png';
 
+import About from "@/components/about";
 import FadeInOnScroll from "@/components/animations/fadeIn";
+import Education from "@/components/education";
+import { Hero } from "@/components/hero";
 import Skills from "@/components/skills";
-import { handleOpenPdf } from "@/lib/utils";
 
 // Lazy load components
 const Navbar = lazy(() => import("@/components/navbar"));
@@ -73,43 +71,9 @@ function App() {
                 </div>
 
                 {/* Navbar */}
-                <section className="text-gray-800 md:w-5/6 h-fit mx-auto z-50">
+                <section className="md:w-5/6 h-fit mx-auto z-50">
                     <Navbar onLinkClick={scrollToSection} />
-                    <div className="items-center grid grid-col-1 md:grid-cols-3 mx-auto pt-10  md:py-36">
-                        <div className="flex px-3 flex-col col-span-2 justify-center text-center rounded-sm lg:text-left">
-                            <FadeInOnScroll duration={0.8} direction="top" className="md:hidden mx-auto mb-5 flex relative items-center justify-center h-fit w-fit">
-                                <Image src={me} alt="My Image" className=" bg-white rounded-full mx-auto" width={150} height={200} />
-                            </FadeInOnScroll>
-                            <FadeInOnScroll direction="bottom">
-                                <p className="text-xl text-white font-bold">Hey there,</p>
-                            </FadeInOnScroll>
-                            <FadeInOnScroll direction="bottom" duration={0.8}>
-                                <h1 className="text-5xl font-bold leading-none sm:text-7xl mt-2"> Naveen Chinnadurai</h1>
-                            </FadeInOnScroll>
-                            <FadeInOnScroll direction="bottom" duration={1}>
-                                <span className="text-violet-600 text-4xl md:text-5xl font-extrabold mt-2"> Software Developer</span>
-                            </FadeInOnScroll>
-                            <FadeInOnScroll direction="bottom" duration={1.2}>
-                                <p className="mt-2 mb-8 text-lg text-slate-400">Dictum aliquam porta in condimentum ac integer
-                                    <br className="hidden md:inline lg:hidden" />turpis pulvinar, est scelerisque <br /> ligula sem Lorem ipsum dolor sit amet consectetur
-                                </p>
-                            </FadeInOnScroll>
-                            <div className="flex items-center sm:space-x-4 justify-center lg:justify-start gap-3">
-                                <FadeInOnScroll direction="left" duration={1.2}>
-                                    <Link href="https:github.com/naveenchinnadurai" className="cursor-pointer"><FaGithub className="text-4xl text-zinc-500" /></Link>
-                                </FadeInOnScroll>
-                                <FadeInOnScroll direction="left" duration={1.2}>
-                                    <Link href="https:linkedin.com/in/naveenchinnadurai" className="cursor-pointer"><FaLinkedin className="text-4xl  text-zinc-500" /></Link>
-                                </FadeInOnScroll>
-                                <FadeInOnScroll direction="left" duration={1.2}>
-                                    <Link href="https:wa.me/+918098150750" className="cursor-pointer"><FaWhatsapp className="text-4xl  text-zinc-500" /></Link>
-                                </FadeInOnScroll>
-                            </div>
-                        </div>
-                        <FadeInOnScroll duration={0.8} direction="right" className="hidden md:flex col-span-1 relative items-center justify-center p-6 mt-8 lg:mt-0 h-full w-full">
-                            <Image src={me} alt="My Image" className="absolute -left-4 object-contain h-[300px] w-[280px] md:w-[130%] md:h-[130%]" width={280} height={300} />
-                        </FadeInOnScroll>
-                    </div>
+                    <Hero />
                 </section>
                 {/* Skills Section */}
                 <div id="skills" className="">
@@ -117,118 +81,13 @@ function App() {
                 </div>
 
                 {/* About Section */}
-                <section id="about" className="h-screen text-white py-12 px-6 md:w-4/5 mx-auto flex flex-col md:flex-row items-center justify-end space-y-8 md:space-y-0">
-                    <FadeInOnScroll direction="left">
-                        <div className="h-[500px] w-[400px] bg-slate-400 hidden md:flex">
-                            {/* <Image
-                                src="https://via.placeholder.com/400x500" // Replace with actual image URL
-                                alt="Profile"
-                                className="h-auto rounded-lg shadow-lg"
-                                width={400}
-                                height={500}
-                            /> */}
-                        </div>
-                    </FadeInOnScroll>
-                    <div className="ml-8 md:w-3/6">
-                        <h2 className="text-4xl font-bold mb-4 relative tracking-widest">
-                            <FadeInOnScroll direction="bottom">
-                                <span className="absolute -top-8 -left-3 inset-0 -z-10 text-gray-200 text-[4rem] font-bold tracking-wider leading-none opacity-10">
-                                    ABOUT
-                                </span>
-                            </FadeInOnScroll>
-                            <FadeInOnScroll direction="bottom" duration={0.8}>
-                                About Me
-                            </FadeInOnScroll>
-                        </h2>
-                        <FadeInOnScroll direction="bottom" duration={0.6}>
-                            <p className="text-gray-400 mb-6">
-                                I&apos;m a passionate developer skilled in frontend and backend
-                                technologies. I enjoy creating user-friendly applications and
-                                solving challenging problems. I&apos;m a passionate developer skilled in frontend and backend
-                                technologies. I enjoy creating user-friendly applications and
-                                solving challenging problems.
-                            </p>
-
-                        </FadeInOnScroll>
-                        <ul className="text-gray-300 space-y-2">
-                            <li>
-                                <FadeInOnScroll direction="bottom" duration={0.3}>
-                                    <span className="font-semibold">Name:</span> Naveen Chinnadurai
-                                </FadeInOnScroll>
-                            </li>
-                            <li>
-                                <FadeInOnScroll direction="bottom" duration={0.35}>
-                                    <span className="font-semibold">Date of birth:</span> March 02, 2004
-                                </FadeInOnScroll>
-                            </li>
-                            <li>
-                                <FadeInOnScroll direction="bottom" duration={0.4}>
-                                    <span className="font-semibold">Address:</span> Ariyalur, Tamilnadu
-                                </FadeInOnScroll>
-                            </li>
-                            <li>
-                                <FadeInOnScroll direction="bottom" duration={0.45}>
-                                    <span className="font-semibold">Zip code:</span> 621704
-                                </FadeInOnScroll>
-                            </li>
-                            <li>
-                                <FadeInOnScroll direction="bottom" duration={0.5}>
-                                    <span className="font-semibold">Email:</span> dev.iamnaveen@gmail.com
-                                </FadeInOnScroll>
-                            </li>
-                            <li>
-                                <FadeInOnScroll direction="bottom" duration={0.55}>
-                                    <span className="font-semibold">Phone:</span> +91 8098150750
-                                </FadeInOnScroll>
-                            </li>
-                        </ul>
-                        <FadeInOnScroll direction="bottom" duration={0.6}>
-                            <Button className="mt-4 bg-slate-800 rounded-lg hover:bg-slate-900" onClick={() => handleOpenPdf()}>View Resume</Button>
-                        </FadeInOnScroll>
-                    </div>
+                <section id="about" >
+                    <About />
                 </section >
 
-                <div id="education" className="py-12 px-6 md:px-0 mx-auto md:w-4/5 relative">
-                    <h2 className="text-4xl font-bold mb-7 relative tracking-widest text-center">
-                        <FadeInOnScroll direction="bottom">
-                            <span className="absolute -top-8 -left-3 inset-0 -z-10 text-gray-200 text-[4rem] font-bold tracking-wider leading-none opacity-10">
-                                EDUCATION
-                            </span>
-                        </FadeInOnScroll>
-                        <FadeInOnScroll direction="bottom" duration={0.8}>
-                            <h2 className="text-white text-md">Education Qualification</h2>
-                        </FadeInOnScroll>
-                    </h2>
-                    {
-                        education.map((edu, index) => (
-                            <div key={index} className="flex items-center w-full relative h-fit pb-10 md:p-0  md:h-52 ">
-                                {/* Timeline Line */}
-                                <div className="absolute left-0 md:left-1/2 -translate-x-1/2 w-1 h-full bg-blue-500"></div>
-
-                                {/* Content Box */}
-                                <div className={`w-full flex shadow-lg ${index % 2 === 0 ? " justify-start pt-5" : " md:justify-end py-10"}`}>
-                                    <FadeInOnScroll direction={index % 2 == 0 ? "left" : "right"} duration={(index / 10) + 0.4} className={`bg-gray-900 p-4 md:p-6 rounded-xl shadow-md h-fit ml-4 -mt-3 md:-mt-10  md:w-1/2 ${index % 2 === 0 ? " md:mr-10 md:-mt-12 md:-ml-5" : "md:ml-10 md:-mt-8 md:-mr-5"}`}>
-                                        <h3 className="text-lg md:text-2xl text-slate-400 font-bold">{edu.degree}</h3>
-                                        <p className="text-md md:text-xl text-violet-600">{edu.institution}, {edu.location}</p>
-                                        <p className="text-gray-400"> {edu.duration}</p>
-                                        <ul className="list-disc list-inside mt-3 text-gray-600">
-                                            {
-                                                edu.details.map((detail, idx) => (
-                                                    <li key={idx}>{detail}</li>
-                                                ))
-                                            }
-                                        </ul>
-                                    </FadeInOnScroll>
-                                </div>
-
-                                {/* Circular Marker */}
-                                <div className="absolute left-0 md:left-1/2 top-0 -translate-x-1/2 w-6 h-6 bg-blue-400 rounded-full border-4 border-white"></div>
-                            </div>
-                        ))
-                    }
+                <div id="education">
+                    <Education />
                 </div>
-
-                <h1 className="text-center text-white">Explore the Course I have done, <Link onClick={() => scrollToSection('certifications')} href="" className="text-violet-800 underline">here</Link></h1>
 
                 {/* Projects */}
                 <div id="portfolio" className="flex flex-col py-12 items-center gap-4">

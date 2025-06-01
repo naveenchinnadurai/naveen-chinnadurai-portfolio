@@ -45,31 +45,37 @@ export const education = [
         degree: "B.E. Computer Science & Engineering",
         institution: "Sengunthar Engineering College",
         location: "Tiruchengode, Tamilnadu",
+        status: "Graduated",
         duration: "2021-2025",
         details: [
             "CGPA: 8.25 ",
-            // "Related Coursework: Data Structures & Algorithms, Objects & Design, Computer Organization & Programming, Machine Learning, Artificial Intelligence, Object-Oriented Programming, Statistics & Applications.",
         ],
+        coursework: ["Data Structures & Algorithms", "Objects & Design", "Computer Organization & Programming", "Machine Learning", "Artificial Intelligence", "Object-Oriented Programming", "Statistics & Applications"],
+
     },
     {
         degree: "Higher Secondary Education",
         institution: "Vidya Mandir Public School (CBSE)",
         location: "Ariyalur, Tamilnadu",
         duration: "2020-2021",
+        status: "Completed",
         details: [
             "Percentage: 80%",
             // "Related Coursework: Computer Science, Maths, Physics, Chemistry, English",
         ],
+        coursework: ["Maths", "Physics", "Chemistry", "Computer Science", "English"],
     },
     {
         degree: "Senior Secondary Education",
         institution: "Varadha Vikas Public School (CBSE)",
         location: "Perambalur, Tamilnadu",
+        status: "Completed",
         duration: "2018-2019",
         details: [
             "Percentage: 86%",
             // "Related Coursework: Computer Science, Maths, Physics, Chemistry, English",
         ],
+        coursework: ["Tamil", "English", "Maths", "Science", "Social Science"],
     }
 ]
 
