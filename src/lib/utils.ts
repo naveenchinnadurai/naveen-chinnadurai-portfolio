@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const handleOpenPdf = () => {
-  const pdfUrl = '/Naveen_Fullstack_Resume.pdf';
+  const pdfUrl = '/Naveen_Software_Developer.pdf';
   window.open(pdfUrl, "_blank");
 };
 

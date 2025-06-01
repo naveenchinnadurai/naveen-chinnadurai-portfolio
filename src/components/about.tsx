@@ -4,7 +4,7 @@ import { handleOpenPdf } from "@/lib/utils";
 import { Button } from './ui/button';
 function About() {
     return (
-        <div className="h-screen text-white py-12 px-6 md:w-4/5 mx-auto flex flex-col md:flex-row items-center justify-end space-y-8 md:space-y-0">
+        <div className="h-screen text-white py-12 px-3 md:px-6 md:w-4/5 mx-auto flex flex-col md:flex-row items-center justify-end space-y-8 md:space-y-0">
             <FadeInOnScroll direction="left">
                 <div className="h-[500px] w-[400px] bg-slate-400 hidden md:flex">
                     {/* <Image

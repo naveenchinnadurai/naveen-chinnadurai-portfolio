@@ -37,23 +37,23 @@ function Education() {
                                     {/* Content */}
                                     <div className={`w-full md:w-1/2 pb-3 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"} ml-5 md:ml-0`}>
                                         <motion.div whileHover={{ scale: 1.02, y: -5 }} transition={{ duration: 0.3 }}>
-                                            <Card className=" group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/20">
-                                                <CardContent className="bg-gradient-to-r from-[#584781] to-[#1b0d31] p-6 rounded-lg relative ">
+                                            <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/20">
+                                                <CardContent className="bg- text-white p-3 md:p-6 rounded-lg relative ">
                                                     <div className="flex items-start justify-between mb-4">
-                                                        <div className="flex items-start gap-4">
+                                                        <div className="flex flex-col md:flex-row items-start gap-4">
                                                             <motion.div
-                                                                className="p-3 border-indigo-200 rounded-xl"
+                                                                className="p-3 border border-purple-200 rounded-xl"
                                                                 whileHover={{ rotate: 360 }}
                                                                 transition={{ duration: 0.6 }}
                                                             >
                                                                 <GraduationCap className="w-6 h-6 text-primary" />
                                                             </motion.div>
                                                             <div>
-                                                                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                                                                <h3 className="text-slate-300 text-xl font-bold mb-2 group-hover:text-primary transition-colors">
                                                                     {edu.degree}
                                                                 </h3>
-                                                                <p className="text-muted-foreground font-medium text-lg">{edu.institution}</p>
-                                                                <p className="text-muted-foreground font-medium text-lg">{edu.location}</p>
+                                                                <p className=" text-slate-400 text-muted-foreground font-medium text-lg">{edu.institution}</p>
+                                                                <p className="text-slate-500 text-muted-foreground font-medium text-lg">{edu.location}</p>
                                                             </div>
                                                         </div>
                                                         {/* <Badge variant="secondary" className="border-purple-700/90 text-white absolute top-2 right-2">
