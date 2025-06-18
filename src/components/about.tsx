@@ -4,7 +4,7 @@ import { handleOpenPdf } from "@/lib/utils";
 import { Button } from './ui/button';
 function About() {
     return (
-        <div className="h-screen text-white py-12 px-3 md:px-6 md:w-4/5 mx-auto flex flex-col md:flex-row items-center justify-end space-y-8 md:space-y-0">
+        <div className="h-screen text-white py-10  px-3 md:px-6 md:w-4/5 mx-auto flex flex-col md:flex-row items-center justify-end space-y-8 md:space-y-0">
             <FadeInOnScroll direction="left">
                 <div className="h-[500px] w-[400px] bg-slate-400 hidden md:flex">
                     {/* <Image
@@ -16,10 +16,10 @@ function About() {
                             /> */}
                 </div>
             </FadeInOnScroll>
-            <div className="ml-8 md:w-3/6">
+            <div className="ml-8 md:w-1/2 ">
                 <h2 className="text-4xl font-bold mb-4 relative tracking-widest">
                     <FadeInOnScroll direction="bottom">
-                        <span className="absolute -top-8 -left-3 inset-0 -z-10 text-gray-200 text-[4rem] font-bold tracking-wider leading-none opacity-10">
+                        <span className="absolute -top-5 -left-2 inset-0 -z-10 text-gray-200 text-6xl font-bold tracking-wider leading-none opacity-10">
                             ABOUT
                         </span>
                     </FadeInOnScroll>

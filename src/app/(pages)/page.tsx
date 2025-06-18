@@ -2,12 +2,13 @@
 import { certifications, projects } from "@/lib/data";
 import { Calendar, ChevronsDown } from "lucide-react";
 import Image from "next/image";
-import { Suspense, lazy, useEffect, useState } from "react";
+import { Suspense, lazy, useState } from "react";
 
 import spotlight from '../../assets/spotlight.png';
 
 import About from "@/components/about";
 import FadeInOnScroll from "@/components/animations/fadeIn";
+import ScrollToTop from "@/components/animations/scrollToTop";
 import Education from "@/components/education";
 import { Hero } from "@/components/hero";
 import Skills from "@/components/skills";
@@ -20,19 +21,8 @@ const Footer = lazy(() => import("@/components/footer"));
 const ProjectCard = lazy(() => import("@/components/projectCard"));
 
 function App() {
-    const [isMobile, setIsMobile] = useState(false);
-    console.log(isMobile)
     const [displayCount, setDisplayCount] = useState(8);
-
-    useEffect(() => {
-        const checkScreenSize = () => {
-            setIsMobile(window.innerWidth <= 1000);
-        };
-        checkScreenSize();
-        window.addEventListener("resize", checkScreenSize);
-        return () => window.removeEventListener("resize", checkScreenSize);
-    }, []);
-
+    
     const loadMoreProjects = () => {
         setDisplayCount(displayCount + 8);
     };
@@ -44,16 +34,6 @@ function App() {
             section.scrollIntoView({ behavior: "smooth" });
         }
     };
-
-    // if (isMobile) {
-    //     return (
-    //         <div className="flex flex-col justify-center items-center h-screen text-center p-5">
-    //             <MessageCircleWarning className="text-7xl text-purple-300 mb-3" />
-    //             <h2 className="text-lg text-violet-600">Currently Not available for Mobile Devices,</h2>
-    //             <h2 className="text-md text-violet-400">Try with Desktop screens</h2>
-    //         </div>
-    //     )
-    // }
 
     return (
         <Suspense fallback={
@@ -76,7 +56,7 @@ function App() {
                     <Hero />
                 </section>
                 {/* Skills Section */}
-                <div id="skills" className="">
+                <div className="">
                     <Skills />
                 </div>
 
@@ -145,7 +125,6 @@ function App() {
                         <div className="w-fit flex gap-2">
                             {
                                 certifications.map((cert, index) => {
-                                    console.log(index / 10)
                                     return (
                                         <div
                                             key={index}
@@ -170,7 +149,7 @@ function App() {
                 </div>
                 <Footer />
             </div >
-
+            <ScrollToTop />
         </Suspense >
     );
 }

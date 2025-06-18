@@ -1,15 +1,25 @@
-"use client"
-import { useInView } from 'react-intersection-observer';
+"use client";
 import { motion } from 'framer-motion';
 
 interface FadeInOnScrollProps {
     children: React.ReactNode;
-    threshold?: number;  // Customize the threshold of in-view trigger
-    direction?: "top" | "bottom" | "left" | "right"; // Direction of the animation
-    duration?: number; // Duration of the fade-in effect
+    threshold?: number;
+    direction?: "top" | "bottom" | "left" | "right";
+    duration?: number;
     className?: string;
-    delay?: number
+    delay?: number;
+    triggerOnce?: boolean;
 }
+
+const getOffset = (dir: string) => {
+    switch (dir) {
+        case "top": return { x: 0, y: -50 };
+        case "bottom": return { x: 0, y: 50 };
+        case "left": return { x: -50, y: 0 };
+        case "right": return { x: 50, y: 0 };
+        default: return { x: 0, y: 0 };
+    }
+};
 
 const FadeInOnScroll: React.FC<FadeInOnScrollProps> = ({
     children,
@@ -17,38 +27,25 @@ const FadeInOnScroll: React.FC<FadeInOnScrollProps> = ({
     direction = "top",
     duration = 0.5,
     className = "",
-    delay = 0
+    delay = 0,
+    triggerOnce = false
 }) => {
-    const { ref, inView } = useInView({
-        triggerOnce: false,  // Ensures the animation happens only once when it enters view
-        threshold,  // Percentage of element in view before trigger (default is 0.1)
-    });
-
-    const animations = {
-        top: {
-            initial: { opacity: 0, y: -100 },
-            animate: { opacity: inView ? 1 : 0, y: inView ? 0 : -100 },
-        },
-        bottom: {
-            initial: { opacity: 0, y: 100 },
-            animate: { opacity: inView ? 1 : 0, y: inView ? 0 : 100 },
-        },
-        left: {
-            initial: { opacity: 0, x: -100 },
-            animate: { opacity: inView ? 1 : 0, x: inView ? 0 : -100 },
-        },
-        right: {
-            initial: { opacity: 0, x: 100 },
-            animate: { opacity: inView ? 1 : 0, x: inView ? 0 : 100 },
-        },
-    };
+    const offset = getOffset(direction);
 
     return (
         <motion.div
-            ref={ref}
-            initial={animations[direction].initial}
-            animate={animations[direction].animate}
-            transition={{ duration, delay }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: triggerOnce, amount: threshold }}
+            variants={{
+                hidden: { opacity: 0, ...offset },
+                visible: {
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    transition: { duration, delay }
+                },
+            }}
             className={className}
         >
             {children}

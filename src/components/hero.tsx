@@ -6,7 +6,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import FadeIn from "@/components/animations/fadeIn"
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
-import me from '../assets/me2.png';
+import me from '../assets/me.png';
 import Image from "next/image"
 
 export function Hero() {
@@ -14,13 +14,15 @@ export function Hero() {
     <section className="text-white min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/20 px-4">
       <div className="max-w-4xl mx-auto text-center space-y-8">
         <Image
-          width={30}
-          height={30}
           src={me.src}
           alt="Naveen Chinnadurai"
-          className="w-32 h-32 md:w-60 bg-white md:h-60 rounded-full mx-auto shadow-lg"
+          width={240}
+          height={240}
+          className="w-32 h-32 md:w-60 md:h-60 mx-auto rounded-full object-contain shadow-lg bg-white"
+          quality={100}
           loading="lazy"
         />
+
         <div className="space-y-4">
           <FadeIn direction="bottom" delay={0.2}>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
@@ -58,14 +60,14 @@ export function Hero() {
           <div className="flex justify-center items-center gap-6">
             <FadeIn direction="left" duration={0.6}>
               <motion.div whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.9 }}>
-                <Link href="https:github.com/naveenchinnadurai" className="cursor-pointer">
+                <Link href="https://github.com/naveenchinnadurai" target="__blank" className="cursor-pointer">
                   <FaGithub className="text-4xl text-zinc-500" />
                 </Link>
               </motion.div>
             </FadeIn>
             <FadeIn direction="left" duration={0.8}>
               <motion.div whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.9 }}>
-                <Link href="https:linkedin.com/in/naveenchinnadurai" className="cursor-pointer">
+                <Link href="https://www.linkedin.com/in/naveen-chinnadurai/" className="cursor-pointer">
                   <FaLinkedin className="text-4xl  text-zinc-500" />
                 </Link>
               </motion.div>

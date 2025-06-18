@@ -68,7 +68,7 @@ export default function ContactInfo() {
                                 item.info == 'message' && (
                                     <Dialog open={open} onOpenChange={setOpen}>
                                         <DialogTrigger asChild>
-                                            <Button className="text-purple-950 hover:text-purple-900 rounded-full px-0 py-0 ml-2 text-sm font-semibold">
+                                            <Button disabled className="text-purple-950 hover:text-purple-900 rounded-full px-0 py-0 ml-2 text-sm font-semibold">
                                                 <Message />
                                             </Button>
                                         </DialogTrigger>
@@ -107,7 +107,7 @@ function ContactForm({ onSuccess }: { onSuccess: () => void }) {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("Form Data:", formData);
+        // console.log("Form Data:", formData);
         setFormData({
             name: "",
             phone: "",
