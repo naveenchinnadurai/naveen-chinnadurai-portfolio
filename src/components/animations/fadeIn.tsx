@@ -23,12 +23,12 @@ const getOffset = (dir: string) => {
 
 const FadeInOnScroll: React.FC<FadeInOnScrollProps> = ({
     children,
-    threshold = 0.3,
+    threshold = 0.2,
     direction = "top",
     duration = 0.5,
     className = "",
     delay = 0,
-    triggerOnce = false
+    triggerOnce = true
 }) => {
     const offset = getOffset(direction);
 

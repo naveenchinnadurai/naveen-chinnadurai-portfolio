@@ -47,6 +47,7 @@ export const education = [
         location: "Tiruchengode, Tamilnadu",
         status: "Graduated",
         duration: "2021-2025",
+        description: "Four-year undergraduate programme covering core computer science, from data structures and algorithms to machine learning and AI, alongside hands-on project work in full-stack web and mobile development.",
         details: [
             "CGPA: 8.25 ",
         ],
@@ -59,6 +60,7 @@ export const education = [
         location: "Ariyalur, Tamilnadu",
         duration: "2020-2021",
         status: "Completed",
+        description: "CBSE higher secondary with the Computer Science stream, building a strong foundation in mathematics, physics and programming that led into engineering.",
         details: [
             "Percentage: 80%",
             // "Related Coursework: Computer Science, Maths, Physics, Chemistry, English",
@@ -71,6 +73,7 @@ export const education = [
         location: "Perambalur, Tamilnadu",
         status: "Completed",
         duration: "2018-2019",
+        description: "CBSE secondary schooling with a well-rounded curriculum across mathematics, science, languages and social science.",
         details: [
             "Percentage: 86%",
             // "Related Coursework: Computer Science, Maths, Physics, Chemistry, English",

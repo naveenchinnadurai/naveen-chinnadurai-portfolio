@@ -23,12 +23,15 @@ import drizzleORM from '../assets/logo/drizzleorm.svg';
 import postman from '../assets/logo/postman.svg';
 import materialUI from '../assets/logo/materialUI.svg';
 
-import FadeIn from "@/components/animations/fadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/stagger-container";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Code, Database, Globe, Smartphone } from "lucide-react";
+import { Cloud, Code, Database, Globe } from "lucide-react";
 import Image from 'next/image';
+import type { IconType } from 'react-icons';
+import { FaAws } from 'react-icons/fa';
+import { SiNestjs } from 'react-icons/si';
+import SectionHeader from "@/components/sectionHeader";
 
 const skillsLogo = {
     "Java": { src: java, size: "h-8 w-8 md:h-10 md:w-10" },
@@ -42,7 +45,7 @@ const skillsLogo = {
     "Git": { src: git, size: "h-8 w-8 md:h-8 md:w-8" },
     "Github": { src: github, size: "h-8 w-8 md:h-8 md:w-8 bg-gray-200 rounded-full " },
     "SQLite": { src: sqlite, size: "h-8 w-8 md:h-8 md:w-8" },
-    "PostgreSQL": { src: postgresql, size: "h-8 w-8 md:h-8 md:w-0" },
+    "PostgreSQL": { src: postgresql, size: "h-8 w-8 md:h-8 md:w-8" },
     "Python": { src: python, size: "h-8 w-8 md:h-10 md:w-10" },
     "Supabase": { src: supabase, size: "h-8 w-8 md:h-8 md:w-8" },
     "Express.js": { src: express, size: "h-8 w-8 md:h-8 md:w-13" },
@@ -57,6 +60,12 @@ const skillsLogo = {
 
 type SkillKey = keyof typeof skillsLogo;
 
+// Skills without a bundled logo file render a react-icons glyph in the brand colour
+const skillsIcon: Record<string, { icon: IconType; color: string }> = {
+    "NestJS": { icon: SiNestjs, color: "#E0234E" },
+    "AWS": { icon: FaAws, color: "#FF9900" },
+};
+
 export default function Skills() {
     const skillCategories = [
         {
@@ -67,7 +76,7 @@ export default function Skills() {
         {
             title: "Backend",
             icon: Database,
-            skills: ["Node.js", "Express.js", "SQLite", "PostgreSQL", "MySQL", "Drizzle ORM"],
+            skills: ["Node.js", "NestJS", "Express.js", "SQLite", "PostgreSQL", "MySQL", "Drizzle ORM"],
         },
         {
             title: "Programming",
@@ -75,32 +84,22 @@ export default function Skills() {
             skills: ["Java", "Python", "TypeScript", "JavaScript", "C", "C++"],
         },
         {
-            title: "Others Tools",
-            icon: Smartphone,
-            skills: ["Git", "Github", "Supabase", "Figma", "Postman"],
+            title: "Cloud & Tools",
+            icon: Cloud,
+            skills: ["AWS", "Git", "Github", "Supabase", "Figma", "Postman"],
         },
     ];
 
     return (
         <section id="skills" className="py-20 px-4 bg-slate-800/90 text-white">
             <div className="max-w-6xl mx-auto">
-                <FadeIn direction="top">
-                    <div className="text-center mb-16">
-                        <h2 className="relative text-4xl font-bold mb-2 text-white tracking-[10px]">
-                            <FadeIn direction="bottom" duration={0.5}>
-                                Skills
-                            </FadeIn>
-                            <FadeIn direction="bottom" duration={0.4} className="absolute -top-4 md:-top-10 inset-0 -z-10">
-                                <span className="tracking-[16px] md:tracking-[18px] text-slate-800 text-6xl md:text-8xl font-bold leading-none">
-                                    Skills
-                                </span>
-                            </FadeIn>
-                        </h2>
-                        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                            Technologies and tools I{"'"}ve worked with during my learning journey
-                        </p>
-                    </div>
-                </FadeIn>
+                <SectionHeader
+                    eyebrow="Tech Stack"
+                    title="Skills &"
+                    highlight="Tools"
+                    description="The languages, frameworks and platforms I use to design, build and ship production software."
+                    className="mb-14"
+                />
 
                 <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
                     {
@@ -123,7 +122,7 @@ export default function Skills() {
                                                                 key={skillIndex}
                                                                 whileHover={{ scale: 1.1 }}
                                                                 whileTap={{ scale: 0.95 }}
-                                                                className="flex flex-col items-center gap-1 w-fit"
+                                                                className="flex flex-col items-center gap-1.5 w-16"
                                                             >
                                                                 {
                                                                     skillsLogo[skill as SkillKey] ? (
@@ -133,11 +132,14 @@ export default function Skills() {
                                                                             title={skill}
                                                                             className={skillsLogo[skill as SkillKey].size + " object-contain"}
                                                                         />
-                                                                    ) : (
-                                                                        <span className="text-sm text-muted-foreground">{skill}</span>
-                                                                    )
+                                                                    ) : skillsIcon[skill] ? (
+                                                                        (() => {
+                                                                            const { icon: Icon, color } = skillsIcon[skill];
+                                                                            return <Icon title={skill} className="h-8 w-8 md:h-9 md:w-9" style={{ color }} />;
+                                                                        })()
+                                                                    ) : null
                                                                 }
-
+                                                                <span className="text-[11px] text-gray-400">{skill}</span>
                                                             </motion.div>
                                                         );
                                                     })
