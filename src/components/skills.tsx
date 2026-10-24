@@ -23,39 +23,37 @@ import drizzleORM from '../assets/logo/drizzleorm.svg';
 import postman from '../assets/logo/postman.svg';
 import materialUI from '../assets/logo/materialUI.svg';
 
-import { StaggerContainer, StaggerItem } from "@/components/animations/stagger-container";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import SectionHeader from "@/components/sectionHeader";
 import { motion } from "framer-motion";
-import { Cloud, Code, Database, Globe } from "lucide-react";
+import { Cloud, Code2, Database, LayoutTemplate } from "lucide-react";
 import Image from 'next/image';
 import type { IconType } from 'react-icons';
 import { FaAws } from 'react-icons/fa';
 import { SiNestjs } from 'react-icons/si';
-import SectionHeader from "@/components/sectionHeader";
 
 const skillsLogo = {
-    "Java": { src: java, size: "h-8 w-8 md:h-10 md:w-10" },
-    "React": { src: react, size: "h-10 w-10 md:h-9 md:w-9" },
-    "JavaScript": { src: javascript, size: "h-8 w-8 md:h-8 md:w-8" },
-    "Node.js": { src: nodejs, size: "h-8 w-8 md:h-8 md:w-8" },
-    "TypeScript": { src: typescript, size: "h-8 w-8 md:h-8 md:w-8" },
-    "Tailwind CSS": { src: tailwind, size: "h-8 w-8 md:h-10 md:w-10" },
-    "Next.js": { src: next, size: "h-8 w-8 md:h-9 md:w-9 bg-gray-200 rounded-full" },
-    "Figma": { src: figma, size: "h-8 w-8 md:h-8 md:w-8" },
-    "Git": { src: git, size: "h-8 w-8 md:h-8 md:w-8" },
-    "Github": { src: github, size: "h-8 w-8 md:h-8 md:w-8 bg-gray-200 rounded-full " },
-    "SQLite": { src: sqlite, size: "h-8 w-8 md:h-8 md:w-8" },
-    "PostgreSQL": { src: postgresql, size: "h-8 w-8 md:h-8 md:w-8" },
-    "Python": { src: python, size: "h-8 w-8 md:h-10 md:w-10" },
-    "Supabase": { src: supabase, size: "h-8 w-8 md:h-8 md:w-8" },
-    "Express.js": { src: express, size: "h-8 w-8 md:h-8 md:w-13" },
-    "C": { src: c, size: "h-8 w-8 md:h-9 md:w-9" },
-    "C++": { src: cplusplus, size: "h-8 w-8 md:h-9 md:w-9" },
-    "Bootstrap": { src: bootstrap, size: "h-8 w-8 md:h-10 md:w-10" },
-    "MySQL": { src: mysql, size: "h-8 w-8 md:h-8 md:w-8" },
-    "Drizzle ORM": { src: drizzleORM, size: "h-8 w-8 md:h-9 md:w-11" },
-    "Postman": { src: postman, size: "h-8 w-8 md:h-8 md:w-8" },
-    "Material UI": { src: materialUI, size: "h-8 w-8 md:h-10 md:w-7" },
+    "Java": java,
+    "React": react,
+    "JavaScript": javascript,
+    "Node.js": nodejs,
+    "TypeScript": typescript,
+    "Tailwind CSS": tailwind,
+    "Next.js": next,
+    "Figma": figma,
+    "Git": git,
+    "Github": github,
+    "SQLite": sqlite,
+    "PostgreSQL": postgresql,
+    "Python": python,
+    "Supabase": supabase,
+    "Express.js": express,
+    "C": c,
+    "C++": cplusplus,
+    "Bootstrap": bootstrap,
+    "MySQL": mysql,
+    "Drizzle ORM": drizzleORM,
+    "Postman": postman,
+    "Material UI": materialUI,
 } as const;
 
 type SkillKey = keyof typeof skillsLogo;
@@ -66,32 +64,52 @@ const skillsIcon: Record<string, { icon: IconType; color: string }> = {
     "AWS": { icon: FaAws, color: "#FF9900" },
 };
 
-export default function Skills() {
-    const skillCategories = [
-        {
-            title: "Frontend",
-            icon: Globe,
-            skills: ["React", "Next.js", "Tailwind CSS", "Bootstrap", "Material UI"],
-        },
-        {
-            title: "Backend",
-            icon: Database,
-            skills: ["Node.js", "NestJS", "Express.js", "SQLite", "PostgreSQL", "MySQL", "Drizzle ORM"],
-        },
-        {
-            title: "Programming",
-            icon: Code,
-            skills: ["Java", "Python", "TypeScript", "JavaScript", "C", "C++"],
-        },
-        {
-            title: "Cloud & Tools",
-            icon: Cloud,
-            skills: ["AWS", "Git", "Github", "Supabase", "Figma", "Postman"],
-        },
-    ];
 
+const skillCategories = [
+    {
+        title: "Frontend",
+        icon: LayoutTemplate,
+        blurb: "Interfaces that feel effortless",
+        skills: ["React", "Next.js", "Tailwind CSS", "Bootstrap", "Material UI"],
+    },
+    {
+        title: "Backend",
+        icon: Database,
+        blurb: "APIs, services and data",
+        skills: ["Node.js", "NestJS", "Express.js", "SQLite", "PostgreSQL", "MySQL", "Drizzle ORM"],
+    },
+    {
+        title: "Programming",
+        icon: Code2,
+        blurb: "Languages I think in",
+        skills: ["Java", "Python", "TypeScript", "JavaScript", "C", "C++"],
+    },
+    {
+        title: "Cloud & Tools",
+        icon: Cloud,
+        blurb: "Shipping and collaborating",
+        skills: ["AWS", "Git", "Github", "Supabase", "Figma", "Postman"],
+    },
+];
+
+const allSkills = skillCategories.flatMap((c) => c.skills);
+
+function SkillLogo({ skill, className }: { skill: string; className: string }) {
+    if (skillsLogo[skill as SkillKey]) {
+        return <Image src={skillsLogo[skill as SkillKey]} alt="" className={`${className} object-contain`} />;
+    }
+    if (skillsIcon[skill]) {
+        const { icon: Icon, color } = skillsIcon[skill];
+        return <Icon className={className} style={{ color }} />;
+    }
+    return null;
+}
+
+const ease = [0.22, 1, 0.36, 1] as const;
+
+export default function Skills() {
     return (
-        <section id="skills" className="py-20 px-4 bg-slate-800/90 text-white">
+        <section id="skills" className="relative py-16 md:py-24 px-4 overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <SectionHeader
                     eyebrow="Tech Stack"
@@ -101,57 +119,81 @@ export default function Skills() {
                     className="mb-14"
                 />
 
-                <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-                    {
-                        skillCategories.map((category, index) => (
-                            <StaggerItem key={index} direction="up">
-                                <motion.div whileHover={{ y: -10, scale: 1.02 }} transition={{ duration: 0.3 }}>
-                                    <Card className="h-full hover:shadow-xl transition-shadow bg-[#0B1322] border border-slate-800 rounded-lg">
-                                        <CardHeader className="text-center">
-                                            <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.6 }}>
-                                                <category.icon className="w-8 h-8 mx-auto mb-2 text-purple-800" />
-                                            </motion.div>
-                                            <CardTitle className="text-lg">{category.title}</CardTitle>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <div className="flex flex-wrap gap-4 justify-center">
-                                                {
-                                                    category.skills.map((skill, skillIndex) => {
-                                                        return (
-                                                            <motion.div
-                                                                key={skillIndex}
-                                                                whileHover={{ scale: 1.1 }}
-                                                                whileTap={{ scale: 0.95 }}
-                                                                className="flex flex-col items-center gap-1.5 w-16"
-                                                            >
-                                                                {
-                                                                    skillsLogo[skill as SkillKey] ? (
-                                                                        <Image
-                                                                            src={skillsLogo[skill as SkillKey].src}
-                                                                            alt={skill}
-                                                                            title={skill}
-                                                                            className={skillsLogo[skill as SkillKey].size + " object-contain"}
-                                                                        />
-                                                                    ) : skillsIcon[skill] ? (
-                                                                        (() => {
-                                                                            const { icon: Icon, color } = skillsIcon[skill];
-                                                                            return <Icon title={skill} className="h-8 w-8 md:h-9 md:w-9" style={{ color }} />;
-                                                                        })()
-                                                                    ) : null
-                                                                }
-                                                                <span className="text-[11px] text-gray-400">{skill}</span>
-                                                            </motion.div>
-                                                        );
-                                                    })
-                                                }
-                                            </div>
-                                        </CardContent>
-                                    </Card>
-                                </motion.div>
-                            </StaggerItem>
-                        ))
-                    }
-                </StaggerContainer>
+                <motion.div
+                    className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 items-stretch overflow-x-auto sm:overflow-visible snap-x snap-mandatory hide-scrollbar -mx-4 px-4 py-3 -my-3 sm:m-0 sm:p-0"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-80px" }}
+                    variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+                >
+                    {skillCategories.map((category, index) => (
+                        <motion.div
+                            key={category.title}
+                            variants={{
+                                hidden: { opacity: 0, y: 30 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
+                            }}
+                            whileHover={{ y: -6 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="group card-surface card-hover h-full p-6 flex flex-col shrink-0 basis-[84%] sm:basis-auto snap-center"
+                        >
+                            <div className="flex items-start justify-between">
+                                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-50 text-violet-600 transition-colors duration-500 group-hover:bg-violet-600 group-hover:text-white">
+                                    <category.icon className="h-5 w-5" />
+                                </span>
+                                <span className="font-mono text-xs text-slate-300 transition-colors group-hover:text-violet-400">
+                                    {String(index + 1).padStart(2, "0")}
+                                </span>
+                            </div>
+
+                            <h3 className="mt-5 text-lg font-bold text-foreground">{category.title}</h3>
+                            <p className="mt-1 text-sm text-muted-foreground">{category.blurb}</p>
+
+                            <div className="my-5 h-px bg-gradient-to-r from-violet-100 via-violet-100 to-transparent" />
+
+                            <ul className="flex flex-wrap gap-2">
+                                {category.skills.map((skill) => (
+                                    <li
+                                        key={skill}
+                                        className="inline-flex items-center gap-2 rounded-xl border border-[#f0ecf9] bg-[#fbfaff] pl-1.5 pr-3 py-1.5 text-xs font-medium text-slate-700 transition-colors hover:border-violet-200 hover:bg-violet-50"
+                                    >
+                                        <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-white shadow-[0_1px_3px_rgba(30,27,46,0.08)]">
+                                            <SkillLogo skill={skill} className="h-4 w-4" />
+                                        </span>
+                                        {skill}
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <p className="mt-auto pt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-400">
+                                {category.skills.length} tools
+                            </p>
+                        </motion.div>
+                    ))}
+                </motion.div>
+
+                <p className="sm:hidden mt-4 flex items-center justify-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-400">
+                    Swipe to explore
+                    <motion.span animate={{ x: [0, 6, 0] }} transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}>→</motion.span>
+                </p>
+            </div>
+
+            {/* Infinite logo marquee */}
+            <div
+                className="relative mt-12 md:mt-16 overflow-hidden"
+                style={{
+                    maskImage: "linear-gradient(90deg, transparent, black 12%, black 88%, transparent)",
+                    WebkitMaskImage: "linear-gradient(90deg, transparent, black 12%, black 88%, transparent)",
+                }}
+            >
+                <div className="flex w-max animate-marquee gap-10 hover:[animation-play-state:paused]">
+                    {[...allSkills, ...allSkills].map((skill, i) => (
+                        <span key={`${skill}-${i}`} aria-hidden={i >= allSkills.length} className="inline-flex items-center gap-2.5 text-sm font-medium text-slate-400 whitespace-nowrap">
+                            <SkillLogo skill={skill} className="h-5 w-5 grayscale opacity-70" />
+                            {skill}
+                        </span>
+                    ))}
+                </div>
             </div>
         </section>
     );
