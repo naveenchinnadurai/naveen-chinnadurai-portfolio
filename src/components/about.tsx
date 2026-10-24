@@ -5,7 +5,7 @@ import { handleOpenPdf } from "@/lib/utils";
 import { motion } from 'framer-motion';
 import { Briefcase, Download, Mail, MapPin } from 'lucide-react';
 import Image from 'next/image';
-import me from '../assets/me.png';
+import portrait from '../assets/me-portrait.jpg';
 import FadeInOnScroll from './animations/fadeIn';
 import SectionHeader from "./sectionHeader";
 
@@ -36,10 +36,10 @@ function About() {
                         <motion.div
                             whileHover={{ rotate: -1.5, scale: 1.01 }}
                             transition={{ type: "spring", stiffness: 200, damping: 18 }}
-                            className="relative rounded-[2rem] bg-white p-2.5 shadow-[0_30px_60px_-30px_rgba(91,33,182,0.45)] ring-1 ring-[#ece7f7]"
+                            className="group/portrait relative rounded-[2rem] bg-white p-2.5 shadow-[0_30px_60px_-30px_rgba(91,33,182,0.45)] ring-1 ring-[#ece7f7]"
                         >
                             <div className="rounded-[1.6rem] overflow-hidden bg-violet-50">
-                                <Image src={me} alt="Naveen Chinnadurai" className="w-full aspect-[4/5] object-cover object-top" placeholder="blur" />
+                                <Image src={portrait} alt="Naveen Chinnadurai outdoors, looking to the side" sizes="(min-width: 768px) 340px, 300px" className="w-full aspect-[4/5] object-cover object-[center_20%] transition-transform duration-700 ease-out group-hover/portrait:scale-[1.03]" placeholder="blur" />
                             </div>
                         </motion.div>
                         <motion.div
