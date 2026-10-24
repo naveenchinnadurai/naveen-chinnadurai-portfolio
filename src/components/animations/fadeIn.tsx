@@ -13,10 +13,10 @@ interface FadeInOnScrollProps {
 
 const getOffset = (dir: string) => {
     switch (dir) {
-        case "top": return { x: 0, y: -50 };
-        case "bottom": return { x: 0, y: 50 };
-        case "left": return { x: -50, y: 0 };
-        case "right": return { x: 50, y: 0 };
+        case "top": return { x: 0, y: -30 };
+        case "bottom": return { x: 0, y: 30 };
+        case "left": return { x: -30, y: 0 };
+        case "right": return { x: 30, y: 0 };
         default: return { x: 0, y: 0 };
     }
 };
@@ -43,7 +43,7 @@ const FadeInOnScroll: React.FC<FadeInOnScrollProps> = ({
                     opacity: 1,
                     x: 0,
                     y: 0,
-                    transition: { duration, delay }
+                    transition: { duration, delay, ease: [0.22, 1, 0.36, 1] }
                 },
             }}
             className={className}

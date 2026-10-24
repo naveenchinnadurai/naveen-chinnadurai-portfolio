@@ -52,9 +52,9 @@ function Projects() {
     };
 
     return (
-        <section className="relative flex flex-col py-16 items-center gap-8 px-4 md:px-10">
-            <div className="pointer-events-none absolute top-40 left-0 w-80 h-80 bg-purple-700/10 blur-[120px] rounded-full -z-10" />
-            <div className="pointer-events-none absolute bottom-20 right-0 w-96 h-96 bg-violet-700/15 blur-[120px] rounded-full -z-10" />
+        <section className="relative flex flex-col py-16 md:py-24 items-center gap-8 px-4 md:px-10">
+            <div className="pointer-events-none absolute top-40 left-0 w-80 h-80 bg-violet-200/40 blur-[120px] rounded-full -z-10" />
+            <div className="pointer-events-none absolute bottom-20 right-0 w-96 h-96 bg-fuchsia-100/60 blur-[120px] rounded-full -z-10" />
 
             <SectionHeader
                 eyebrow="Portfolio"
@@ -66,25 +66,25 @@ function Projects() {
             {/* Filters */}
             <FadeInOnScroll direction="bottom" duration={0.5} className="w-full flex justify-center">
                 {/* Single row on every screen; scrolls sideways on narrow phones instead of wrapping */}
-                <div className="flex max-w-full overflow-x-auto hide-scrollbar gap-1 p-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+                <div className="flex max-w-full overflow-x-auto hide-scrollbar gap-1 p-1 rounded-full bg-white border border-[#ece7f7] shadow-sm">
                     {filters.map((filter) => {
                         const isActive = activeFilter === filter;
                         return (
                             <button
                                 key={filter}
                                 onClick={() => selectFilter(filter)}
-                                className={`relative shrink-0 whitespace-nowrap px-2.5 sm:px-3 md:px-4 py-1.5 text-[13px] sm:text-sm rounded-full transition-colors ${isActive ? "text-white" : "text-gray-400 hover:text-gray-200"}`}
+                                className={`relative shrink-0 whitespace-nowrap px-2.5 sm:px-3 md:px-4 py-1.5 text-[13px] sm:text-sm rounded-full transition-colors ${isActive ? "text-white" : "text-slate-500 hover:text-foreground"}`}
                             >
                                 {isActive && (
                                     <motion.span
                                         layoutId="project-filter-pill"
-                                        className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 shadow-[0_0_18px_rgba(139,92,246,0.5)]"
+                                        className="absolute inset-0 rounded-full bg-violet-600 shadow-[0_6px_16px_-6px_rgba(124,58,237,0.7)]"
                                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                                     />
                                 )}
                                 <span className="relative z-10">
                                     {filter}
-                                    <span className={`hidden sm:inline ml-1.5 text-xs ${isActive ? "text-violet-100" : "text-gray-500"}`}>
+                                    <span className={`hidden sm:inline ml-1.5 font-mono text-[11px] ${isActive ? "text-violet-200" : "text-slate-400"}`}>
                                         {countFor(filter)}
                                     </span>
                                 </span>
@@ -104,7 +104,7 @@ function Projects() {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.1 }}
                     variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
-                    className="flex flex-col gap-5 sm:flex-row sm:overflow-x-auto sm:snap-x sm:snap-mandatory hide-scrollbar sm:py-3 sm:-my-3 sm:px-1 sm:-mx-1"
+                    className="flex flex-col gap-5 sm:flex-row sm:overflow-x-auto sm:snap-x sm:snap-mandatory hide-scrollbar sm:py-4 sm:-my-4 sm:px-2 sm:-mx-2"
                 >
                     {filtered.map((project, index) => (
                         <motion.div
@@ -123,9 +123,9 @@ function Projects() {
                 {/* Row controls (sm and up) */}
                 {filtered.length > 1 && (
                     <div className="hidden sm:flex items-center justify-between gap-6 mt-8">
-                        <div className="flex-1 h-1 rounded-full bg-white/10 overflow-hidden">
+                        <div className="flex-1 h-1 rounded-full bg-violet-100 overflow-hidden">
                             <motion.div
-                                className="h-full rounded-full bg-gradient-to-r from-violet-500 to-indigo-500"
+                                className="h-full rounded-full bg-violet-500"
                                 animate={{ width: `${Math.max(scrollState.progress * 100, 8)}%` }}
                                 transition={{ type: "spring", stiffness: 200, damping: 30 }}
                             />
@@ -138,7 +138,7 @@ function Projects() {
                                     aria-label={label}
                                     disabled={!enabled}
                                     onClick={() => scrollRow(dir)}
-                                    className="flex h-11 w-11 items-center justify-center rounded-full border border-violet-500/40 bg-violet-500/10 text-violet-200 transition-all hover:bg-violet-500/25 hover:border-violet-400 disabled:opacity-30 disabled:pointer-events-none"
+                                    className="flex h-11 w-11 items-center justify-center rounded-full border border-[#ece7f7] bg-white text-violet-700 shadow-sm transition-all hover:bg-violet-600 hover:text-white hover:border-violet-600 disabled:opacity-30 disabled:pointer-events-none"
                                 >
                                     <Icon className="h-5 w-5" />
                                 </button>
@@ -152,10 +152,10 @@ function Projects() {
                 <motion.button
                     onClick={() => setDisplayCount(displayCount + PAGE_SIZE)}
                     whileTap={{ scale: 0.97 }}
-                    className="sm:hidden group flex items-center gap-2 px-6 py-2.5 rounded-full border border-violet-500/40 bg-violet-500/10 text-violet-200 hover:bg-violet-500/20 hover:border-violet-400 transition-colors"
+                    className="sm:hidden btn-secondary group"
                 >
                     Load more projects
-                    <span className="text-xs text-violet-300/70">({filtered.length - displayCount} left)</span>
+                    <span className="font-mono text-xs text-slate-400">({filtered.length - displayCount} left)</span>
                     <ChevronsDown className="w-4 h-4 animate-bounce" />
                 </motion.button>
             )}
